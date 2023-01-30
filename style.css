@@ -1,382 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 html {
-    font-family: 'Open Sans', sans-serif; 
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-      box-sizing: border-box;
+    font-family: 'Ubuntu Mono', monospace;
   }
 
   body {
-
-      background: #fff;
-      margin-left: 0;
-      margin-right: 0;
-      color: #333;
-      font-size: 15px;
-      font-weight:300;
-  }
-
-  p {
-      margin: 5px 0;
-      line-height: 25px;
-  }
-
-  a {
-      text-decoration: none;
-      color: #888;
+    background: #1a1a1a;
+    color: green;
+    font-size: 20px;
   }
 
   h1 {
-      font-size: 1.25rem;
+    text-align: left;
   }
 
-  b, strong {font-weight:400;}
-
-
-
-  /* ========================================== */
-  /* HEADER UND NAVIGATION */
-
-  header {
-      position: relative;
-      margin: 20px auto 30px;
-      width: auto;
-      max-width: 800px;
-      height: auto;
-      text-align: center;
+  div.container1 {
+    margin: auto;
+    width: auto;
   }
 
-  nav {
-      z-index: 9999;
-      background-color: #fff;
-      margin-top: 45px;
+  div.left {
+    float: left;
+    width: 400px;
   }
 
-  nav ul {
-      padding: 0;
-      list-style: none;
+  div.center {
+    float: left;
+    width: auto;
   }
 
-  nav ul li {
-      display: inline-block;
-      padding: 3px 20px;
-      color: #888;
+  div.coderow {
+    margin: auto;
+    width: auto;
   }
 
-  nav ul li a {
-      transition: color .5s ease;
-      font-weight: 400;
+  div.codegreen {
+    float: left;
+    width: auto;
+    color: green;
   }
 
-  nav ul li a:hover,
-  nav ul li a:active {
-      color: #333;
+  div.codeblue {
+    float: left;
+    width: auto;
+    color: blue;
   }
 
-
-  /* ========================================== */
-  /* BLOECKE / BEREICHE DER SEITE */
-
-  section {
-      position: relative;
-      margin: 0 auto;
-      text-align: center;
+  div.codewhite {
+    float: left;
+    width: auto;
+    color: white;
   }
-
-  section:nth-child(even) {
-      background-color: #eef2f5;
+  .blinking-cursor {
+    font-weight: 100;
+    font-size: 20px;
+    color: #2E3D48;
+    -webkit-animation: 1s blink step-end infinite;
+    -moz-animation: 1s blink step-end infinite;
+    -ms-animation: 1s blink step-end infinite;
+    -o-animation: 1s blink step-end infinite;
+    animation: 1s blink step-end infinite;
   }
-
-  figure {
-      margin: 0;
+  
+  @keyframes blink {
+    from, to {
+      color: transparent;
+    }
+    50% {
+      color: white;
+    }
   }
-
-  figure img {
-      max-width: 100%;
+  
+  @-moz-keyframes blink {
+    from, to {
+      color: transparent;
+    }
+    50% {
+      color: white;
+    }
   }
-
-  .multicolumn {
-      -webkit-perspective:1;
-
-      /* Anzahl Spalten */
-      -webkit-column-count: 2; /* Ch, Saf, And, BB  */
-      -moz-column-count: 2; /* Fx */
-      column-count: 2; /* IE 10, Op 11.1+ */
-
-      /* Abstand Spalten */
-      -webkit-column-gap: 4em;
-      -moz-column-gap: 4em;
-      column-gap: 4em;
+  
+  @-webkit-keyframes blink {
+    from, to {
+      color: transparent;
+    }
+    50% {
+      color: white;
+    }
   }
-
-  .one-column {
-      margin-bottom: 60px;
+  
+  @-ms-keyframes blink {
+    from, to {
+      color: transparent;
+    }
+    50% {
+      color: white;
+    }
   }
-
-  .one-column p {
-      margin-bottom: 1.5rem;
-  }
-
-
-  article {
-      overflow: hidden;
-      width: 50%;
-      display: table-cell;
-      padding-right: 50px;
-  }
-
-  article h3  {
-      margin: 10px 0;
-  }
-
-
-  figcaption {
-      display: inline-block;
-      line-height: 25px;
-      margin-top: 20px;
-      max-width: 75%;
-  }
-
-  figcaption span {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: 400;
- }
-
-  .callout {
-      position: relative;
-      overflow: hidden;
-      margin: 0 auto;
-      padding: 0 10px 30px;
-      width: auto;
-      max-width: 800px;
-  }
-
-  .callout a {
-      text-decoration: underline;
-  }
-
-  .callout a:hover {
-      color: #333;
-  }
-
-  .callout > h2 {
-      font-weight: 300;
-      font-size: 30px;
-      text-align: center;
-  }
-
-  .callout > ul {
-      padding-left: 1rem;
-  }
-  .callout > ul li {
-      margin: 5px 0;
-  }
-
-
-  .definition-list dt {
-      margin-bottom: 0.21rem;
-      font-weight:400;
-  }
-
-  .definition-list dd {
-      margin: 0 0 1.5rem 0;
-  }
-
-  .secondary-heading {
-      font-weight: normal;
-      font-size: 15px;
-      color: #12a8b5;
-  }
-
-  .competency-heading {
-      margin-top: 60px;
-      font-weight: 400;
-  }
-
-  /* Lebenslaufbild oben */
-  .cliped-image {
-      border-radius: 100%;
-      /* ff */
-
-      /* Clip-Path als Alternative
-      -webkit-clip-path: circle(50% at 50% 50%);
-      clip-path: circle(50% at 50% 50%);
-      */
-  }
-
-  .zitat-image {
-      display: inline-block;
-      padding-right: 2px;
-      width: 45px;
-      height: 45px;
-      vertical-align: top;
-      line-height: 50px;
-      text-align: center;
-      background: #12a8b5;
-  }
-
-  .zitat-image + p {
-      display: inline-block;
-      margin: -5px 0 0 20px;
-      width: 90%;
-  }
-
-  .section-arrow {
-      position: relative;
-      top: -20px;
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      background: #a0adb7;
-      border-radius: 50%;
-      line-height: 40px !important;
-      text-align: center;
-      color: #fff;
-  }
-
-  .back-to-top-button {
-      position: relative;
-      top: -40px;
-      display: inline-block;
-      width: 70px;
-      height: 70px;
-      background: #12a8b5;
-      border-radius: 50%;
-      line-height: 70px !important;
-      text-align: center;
-      color: #fff;
-  }
-
-
-  /* ========================================== */
-  /* FOOTER */
-  footer {
-      clear: both;
-      position: relative;
-      margin: 60px auto 0;
-      width: auto;
-      height: 100px;
-      text-align: center;
-      background: #333;
-      color: #7d7d7d;
-  }
-
-  footer a:hover {
-      color: initial;
-      text-decoration: underline;
-  }
-
-  footer .footer-copyright {
-      margin: -40px auto 0; /* -40px --> gleicher Wert wie bei .back-to-top-button */
-      max-width: 800px;
-      text-align: left;
-      padding-left: 10px;
-  }
-
-  footer i.rotate {
-      /* Pfeil nach oben - rotieren */
-      -webkit-transform: rotate(180deg); /* Ch <36, Saf 5.1+, iOS < 9.2, An =<4.4.4 */
-      -ms-transform: rotate(180deg); /* IE 9 */
-      transform: rotate(180deg); /* IE 10, Fx 16+, Op 12.1+ */
-  }
-
-
-  /* ========================================== */
-  /* HELFER-KLASSEN */
-
-  .text-center {
-      text-align: center;
-  }
-
-  .text-left {
-      text-align: left !important;
-  }
-
-  .clear {
-      clear: both;
-  }
-
-  .mt30 {
-      margin-top: 35px !important;
-  }
-
-  .motto {
-      margin-bottom: 50px;
-  }
-
-  .hr-small {
-      margin: -20px auto 30px;
-      width: 40px;
-      border: solid 1px #12a8b5;
-  }
-
-  .font-licence {
-      margin-top: 10px;
-      font-size: 11px;
-  }
-
-  /* ========================================== */
-  /* ICONS */
-  .icons-social-media {
-      list-style: none;
-      padding-left: 0;
-  }
-
-  .icons-social-media > li {
-      display: inline-block;
-      padding: 0 7px 0 7px;
-      color: #888;
-  }
-
-  .icons-social-media > li i {
-      font-size: 20px;
-  }
-
-  .icons-social-media > li i:hover {
-      color: #333;
-      transition: color .5s ease;
-  }
-
-  .icon-location {
-      color: #12a8b5;
-      font-size: 25px !important;
-  }
-
-  .icon-mail {
-      color: #12a8b5;
-      font-size: 20px !important;
-  }
-
-
-  /* ========================================== */
-  /* MEDIA QUERIES FUER RESPONSIVE LAYOUT */
-
-  @media (max-width: 726px) {
-      .motto  {
-          text-align: center;
-      }
-      .motto  p {
-          margin-top: 10px;
-      }
-  }
-
-  @media (max-width: 641px) {
-      article {
-          display: block;
-          width: 100%;
-      }
-      figure {
-          margin: 30px auto 0;
-      }
-      figcaption {
-          display: block;
-          width: 55%;
-          margin: 0 auto;
-      }
-
-      .multicolumn {
-          -webkit-column-gap: 2em;
-          -moz-column-gap: 2em;
-          column-gap: 2em;
-      }
+  
+  @-o-keyframes blink {
+    from, to {
+      color: transparent;
+    }
+    50% {
+      color: white;
+    }
   }
