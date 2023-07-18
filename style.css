@@ -57,6 +57,21 @@ body {
       typing 3.5s steps(30, end),
       blink-caret .5s step-end infinite;
   }
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    color: white;
+    text-align: center;
+  }
+
+  .footer a{
+    color: white;
+    background-color: blue;
+  }
   
   /* The typing effect */
   @keyframes typing {
