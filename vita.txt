@@ -1,105 +1,41 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Vita.txt>_Christoph Zeitler</title>
-</head>
-<body>
-    <div class="inline">
-        <div class="code1"><b>root</b>@<b>WorlWideWeb</b>:</div>
-        <div class="code2">~$ </div>
-        <div class="code3">date</div>
-    </div>
-    <br>
-    <div class="inline">
-        <div class="code1"><b>root</b>@<b>WorlWideWeb</b>:</div>
-        <div class="code2">~$ </div>
-        <div class="code3"><span id="date-time"></span></div>
-        <script>
-            var dt = new Date();
-            document.getElementById('date-time').innerHTML=dt;
-        </script>
-    </div>
-    <br>
-    <div class="inline">
-        <div class="code1"><b>root</b>@<b>WorlWideWeb</b>:</div>
-        <div class="code2">~$ </div>
-        <div class="code3"></div>
-    </div>
-    <br>
-    <div class="inline">
-        <div class="code1"><b>root</b>@<b>WorlWideWeb</b>:</div>
-        <div class="code2">~$ </div>
-        <div class="code3"></div>
-    </div>
-    <br>
-    <div class="inline">
-        <div class="code1"><b>root</b>@<b>WorlWideWeb</b>:</div>
-        <div class="code2">~$ </div>
-        <div class="code3">ls</div>
-    </div>
-    <br>
-    <div class="inline">
-        <div class="code3"><a href="http://github.com/W0rkingChr1s">github.lnk</a></div>
-        <div class="code3"><a href="https://www.linkedin.com/in/christoph-zeitler-847b311bb/">LinkedIn.lnk</a></div>
-        <div class="code3"><a href="vita.htm">Vita.txt</a></div>
-    </div>
-    <br>
-    <div class="inline">
-        <div class="code1"><b>root</b>@<b>WorlWideWeb</b>:</div>
-        <div class="code2">~$ </div>
-        <div class="code3">cat ./Vita.txt</div>
-    </div>
-    <br>
-    <div class="block">
-        <pre>
-
              ____ _          _     _              _       _____    _ _   _
             / ___| |__  _ __(_)___| |_ ___  _ __ | |__   |__  /___(_) |_| | ___ _ __ 
            | |   | '_ \| '__| / __| __/ _ \| '_ \| '_ \    / // _ \ | __| |/ _ \ '__|
            | |___| | | | |  | \__ \ || (_) | |_) | | | |  / /|  __/ | |_| |  __/ |   
             \____|_| |_|_|  |_|___/\__\___/| .__/|_| |_| /____\___|_|\__|_|\___|_|   
                                            |_|
-        </pre>
-        <pre>   
+
 >>  Im Zeitalter der Computerisierung, erlebten Nerds ihren Aufschwung.
 >>  Ohne uns würden sich viele im Kreis drehen und auf der Stelle laufen.
 >>  Wenn das nur mal die Peiniger aus der Vergangenheit wüssten XD Lustige Vorstellung.
 >>  Ah … also ich, Nerd, Jung, Feuerwehrmann, Sanitäter und Hobbytüftler.
-        </pre>
-        <br>
-        <br>
-        <a>
-            Persönliche Daten:
-        </a>
-        <hr>
-        <pre>
+
+
+Persönliche Daten:
+------------------
+
     Name:                   Christoph Zeitler
     Geburtsdatum:           09.09.1993
     Familienstand:          ledig
-        </pre>
-        <br>
-        <br>
-        <a>Werdegang</a>
-        <hr>
-        <pre>
+
+
+Werdegang
+---------
+
     Berufstätigkeit
     09/2022 - heute         IT-Teamleiter MS-AD-Exchange bei
                             Diakonie Herzogsägmühle gGmbH in Peiting
-    07/2029 - 09/2022       IT-Systemadministrator bei 
+    07/2019 - 09/2022       IT-Systemadministrator bei 
                             Diakonie Herzogsägmühle gGmbH in Peiting
             
     Berufsausbildung
     09/2016 - 07/2019       Ausbildung zum Fachinformatiker für Systemintegration bei
                             Herzogsägmühle Diakonie in München und Oberbayern e.V.
-        </pre>
-        <br>
-        <br>
-        <a>Berufserfahrung</a>
-        <hr>
-        <pre>
+
+
+Berufserfahrung
+---------------
+
     09/2022 - heute         IT-Teamleiter MS-AD-Exchange
         - Windows Server Administration
         - Planung von Teamgebundenen und übergreifenden Projekten
@@ -110,19 +46,19 @@
         - Administration MS Exchange Server
         - Benutzerverwaltung AD
         - Windows Client Support
-        - Solarwinds ARM• MS Active Directory Dienste
+        - Solarwinds ARM
+        - MS Active Directory Dienste
         - Cisco Webex Administration
         - Nextcloud Administration
         - DigitalSignage Administration (Screenly OSE, PiSignage)
 
     Relevante Projekte:
         - Aufbau und Einrichten eines Domain übergreifenden Betriebes über zwei unterschiedliche Domänen
-        - Neuplanung und strukturierung des Active Directory's
-        - Konzernweites Blackout Konzept sowie Notbetrieb und wieder Anlauf-Planung
+        - Neuplanung und Strukturierung des Active Directory's
+        - Konzernweites Blackout Konzept sowie Notbetrieb und Wiederanlauf-Planung
         - Migration von 2 Domain Controllern von Version Server 2016 zu Server 2019
         - Selbstservice Portal anhand des Access Right Managers von Solarwinds
         - Neuplanung der Filestruktur mit Hilfe von DFS
-
 
     07/2019 - 09/2022       IT-Systemadministrator
         - Windows Server Administration
@@ -141,12 +77,11 @@
         - Upgrade Active Directory
         - Betreuung Baramundi Management Software (MDM, Patchmanagement, OS-Deploy)
         - Einführung der Microsoft Bereitstellungsringe für Patch Zyklen.
-        </pre>
-        <br>
-        <br>
-        <a>Qualifikationen und Tätigkeiten</a>
-        <hr>
-        <pre>
+
+
+Qualifikationen und Tätigkeiten
+-------------------------------
+
     - Sehr gute Anwenderkenntnisse im Betriebssystem Windows, sowie Linux und MS Office
     - Microsoft365 Administration
     - Baramundi Management System (Softwareverteilung)
@@ -156,13 +91,3 @@
     - Gute Englischkenntnisse in Wort und Schrift
     - Führerschein Klasse B
     - ITIL v4 zertifiziert
-        </pre>
-    </div>
-    <br>
-    <div class="inline">
-        <div class="code1"><b>root</b>@<b>WorlWideWeb</b>:</div>
-        <div class="code2">~$ </div>
-        <div class="typewriter" style="display: inline;"><a href="https://w0rkingchr1s.github.io/index.htm">exit</a></div>
-    </div>
-</body>
-</html>
