@@ -3,59 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>>_Christoph Zeitler</title>
+    <title>Matrix Terminal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="inline">
-        <div class="code1"><b>root</b>@<b>WorlWideWeb</b>:</div>
-        <div class="code2">~$ </div>
-        <div class="code3">date</div>
-    </div>
-    <br>
-    <div class="inline">
-        <div class="code1"><b>root</b>@<b>WorlWideWeb</b>:</div>
-        <div class="code2">~$ </div>
-        <div class="code3"><span id="date-time"></span></div>
-        <script>
-            var dt = new Date();
-            document.getElementById('date-time').innerHTML=dt;
-        </script>
-    </div>
-    <br>
-    <div class="inline">
-        <div class="code1"><b>root</b>@<b>WorlWideWeb</b>:</div>
-        <div class="code2">~$ </div>
-        <div class="code3"></div>
-    </div>
-    <br>
-    <div class="inline">
-        <div class="code1"><b>root</b>@<b>WorlWideWeb</b>:</div>
-        <div class="code2">~$ </div>
-        <div class="code3"></div>
-    </div>
-    <br>
-    <div class="inline">
-        <div class="code1"><b>root</b>@<b>WorlWideWeb</b>:</div>
-        <div class="code2">~$ </div>
-        <div class="code3">ls</div>
-    </div>
-    <br>
-    <div class="inline">
-        <div class="code3"><a href="http://github.com/W0rkingChr1s">github.lnk</a></div>
-        <div class="code3"><a href="https://www.linkedin.com/in/christoph-zeitler-847b311bb/">LinkedIn.lnk</a></div>
-        <div class="code3"><a href="./vita.htm">Vita.txt</a></div>
-    </div>
-    <br>
-    <div class="inline">
-        <div class="code1"><b>root</b>@<b>WorlWideWeb</b>:</div>
-        <div class="code2">~$ </div>
-        <div class="typewriter"> </div>
-    </div>
-    <footer>
-        <div class="footer">
-            <a href="./impressum.htm"> *IMPRESSUM* </a>
+    <div id="terminal">
+        <div id="output"></div>
+        <div id="input-line">
+            <span id="prompt">guest@zeitler.tech:~$</span>
+            <input type="text" id="input" autofocus>
         </div>
-    </footer>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
