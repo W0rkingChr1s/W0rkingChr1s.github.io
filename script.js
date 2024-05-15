@@ -28,6 +28,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 
+    inputField.addEventListener('focus', () => {
+        scrollToBottom(); // Ensure the input field is visible when focused
+    });
+
     function autocomplete(input) {
         const potentialCommands = commands.concat(Object.keys(files));
         const matches = potentialCommands.filter(cmd => cmd.startsWith(input));
