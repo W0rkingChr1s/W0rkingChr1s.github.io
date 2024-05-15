@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     function executeCommand(command) {
         const output = document.createElement('div');
-        output.textContent = `root@WorldWideWeb:~$ ${command}`;
+        output.textContent = `guest@zeitler.tech:~$ ${command}`;
         outputDiv.appendChild(output);
         const response = document.createElement('div');
 
