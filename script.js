@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const outputDiv = document.getElementById('output');
     const terminalDiv = document.getElementById('terminal');
     const inputLine = document.getElementById('input-line');
+    const coffeeButton = document.getElementById('coffee-button');
 
     const files = {
         'vita': 'vita.txt',
@@ -11,7 +12,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     const commands = [
         'ls', 'cat', 'pwd', 'rm -rf /', 'whoami', 'hello', 'matrix', 'joke', 'quote',
-        'clear', 'date', 'help', 'echo', 'cal', 'cat impressum', 'cat vita'
+        'clear', 'date', 'help', 'echo', 'cal', 'cat impressum', 'cat vita', 'buymeacoffee', 'github'
+    ];
+
+    const commandDescriptions = [
+        { command: 'ls', description: 'List files' },
+        { command: 'cat [file]', description: 'Display file contents' },
+        { command: 'pwd', description: 'Show current directory' },
+        { command: 'rm -rf /', description: 'An important command' },
+        { command: 'whoami', description: 'Display the current user' },
+        { command: 'hello', description: 'A special greeting' },
+        { command: 'matrix', description: 'Follow the white rabbit' },
+        { command: 'joke', description: 'Tell a joke' },
+        { command: 'quote', description: 'Display a random quote' },
+        { command: 'clear', description: 'Clear the terminal screen' },
+        { command: 'date', description: 'Display the current date and time' },
+        { command: 'help', description: 'Show this help message' },
+        { command: 'echo [text]', description: 'Display text' },
+        { command: 'cal', description: 'Display a simple calendar for the current month' },
+        { command: 'buymeacoffee', description: 'Show Buy Me a Coffee button' },
+        { command: 'github', description: 'List GitHub repositories' }
     ];
 
     inputField.addEventListener('keydown', (event) => {
@@ -58,11 +78,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 { text: 'Knock, knock, Neo.', delay: 5000 }
             ];
             simulateTyping(matrixText, 0);
+        } else if (command === 'github') {
+            fetch('https://api.github.com/users/w0rkingchr1s/repos')
+                .then(response => response.json())
+                .then(data => {
+                    let repoList = 'GitHub Repositories:<br>';
+                    data.filter(repo => !repo.fork).forEach(repo => {
+                        repoList += `<a href="${repo.html_url}" target="_blank">${repo.name}</a><br>`;
+                    });
+                    response.innerHTML = repoList;
+                    outputDiv.appendChild(response);
+                    scrollToBottom();
+                })
+                .catch(error => {
+                    response.textContent = 'Error fetching GitHub repositories';
+                    outputDiv.appendChild(response);
+                    scrollToBottom();
+                });
         } else {
             outputDiv.appendChild(response);
             if (command === 'ls') {
                 response.innerHTML = '18/07/2023  04:38 PM   6360  vita<br>' +
                     '18/07/2023  01:17 PM   10300 impressum';
+                scrollToBottom();
+            } else if (command === 'cat') {
+                response.textContent = 'Purr...';
                 scrollToBottom();
             } else if (command.startsWith('cat ')) {
                 const fileName = command.split(' ')[1];
@@ -98,7 +138,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         response.textContent = "I'm sorry, Dave. I'm afraid I can't do that.";
                         break;
                     case 'whoami':
-                        response.textContent = 'root';
+                        response.textContent = 'hooman';
                         break;
                     case 'hello':
                         response.textContent = 'General Kenobi. You are a bold one. Kill him!';
@@ -129,24 +169,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         response.textContent = new Date().toString();
                         break;
                     case 'help':
-                        response.innerHTML = 'Available commands:<br>' +
-                            'ls - List files<br>' +
-                            'cat [file] - Display file contents<br>' +
-                            'pwd - Show current directory<br>' +
-                            'rm -rf / - An important command<br>' +
-                            'whoami - Display the current user<br>' +
-                            'hello - A special greeting<br>' +
-                            'matrix - Follow the white rabbit<br>' +
-                            'joke - Tell a joke<br>' +
-                            'quote - Display a random quote<br>' +
-                            'clear - Clear the terminal screen<br>' +
-                            'date - Display the current date and time<br>' +
-                            'help - Show this help message<br>' +
-                            'echo [text] - Display text<br>' +
-                            'cal - Display a simple calendar for the current month';
+                        response.innerHTML = 'Available commands:<br>';
+                        commandDescriptions.sort((a, b) => a.command.localeCompare(b.command));
+                        commandDescriptions.forEach(cmd => {
+                            response.innerHTML += `${cmd.command} - ${cmd.description}<br>`;
+                        });
                         break;
                     case 'cal':
                         response.textContent = getCalendar();
+                        break;
+                    case 'buymeacoffee':
+                        response.innerHTML = getCoffeeArt();
+                        coffeeButton.style.display = 'block';
+                        scrollToBottom(); // Ensure the terminal scrolls to show the new content
                         break;
                     default:
                         response.textContent = `${command}: command not found`;
@@ -216,5 +251,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
 
         return calendar;
+    }
+
+    function getCoffeeArt() {
+        return `
+             ) ) )
+            ( ( (
+             ) ) )
+          .........
+          |       |]
+          \\       /
+           \`-----'\`
+<a href="https://buymeacoffee.com/w0rkingchr1s" target="_blank">     ┏━━━━━━━━━━━━━━━━━━━━┓<br>     ┃ ⛾ Buy me a Coffee ┃<br>     ┗━━━━━━━━━━━━━━━━━━━━┛</a>
+        `;
     }
 });
