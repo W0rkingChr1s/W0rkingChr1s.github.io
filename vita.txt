@@ -23,7 +23,12 @@ Werdegang
 ---------
 
     Berufstätigkeit
-    09/2022 - heute         IT-Teamleiter MS-AD-Exchange bei
+    02.2025 - dato          Senior IT-Systemadministrator bei 
+                            SoftDeCC Software GmbH in München
+    05.2024 - 01.2025       Senior IT-Systemadministrator bei 
+                            Diakonie Herzogsägmühle gGmbH in Peiting
+    11.2023 - 04.2024       IT-Feldwebel bei der Bundeswehr in Murnau
+    09/2022 - 10.2023       IT-Teamleiter MS-AD-Exchange bei
                             Diakonie Herzogsägmühle gGmbH in Peiting
     07/2019 - 09/2022       IT-Systemadministrator bei 
                             Diakonie Herzogsägmühle gGmbH in Peiting
@@ -35,8 +40,29 @@ Werdegang
 
 Berufserfahrung
 ---------------
-
-    09/2022 - heute         IT-Teamleiter MS-AD-Exchange
+    02/2025 – dato          Senior IT-Systemadministrator bei SoftDeCC Software GmbH
+        - Administration der Server Landschaft (Windows Server, Linux)
+        - Administration des MS ADDS
+        - Administration von M365
+        - Administration der Unternehmensanwendungen
+        - Clint Management incl. Softwareverteilung und Inventarisierung
+        - Firewall Konfiguration und Verwaltung
+        - Vorbereitung der Kundeninstallationen in AWS
+    Relevante Projekte:
+        - Einführung und Einrichtung von Baramundi
+        - Umzug von MDeamon nach Exchange Online
+        - Härtung der Benutzerstruktur Tier-Konzept
+    05/2024 – 01/2025        Senior IT-Systemadministrator bei Diakonie Herzogsägmühle gGmbH
+        - Administration der Windows Server Landschaft
+        - Administration der im Unternehmen eingesetzten Software
+        - Clientmanagement incl. Softwareverteilung und Inventarisierung
+        - Betreuung und Bereitstellung des Intranets auf der Basis von Intrexx
+    11/2023 – 04/2024        IT-Feldwebel bei der Bundeswehr
+        - Koordination des Server Trupps zur Verlegung
+        - Auf- und Abbau von Serverkomponenten
+        - Inbetriebnahme und Einrichtung der Serverkomponenten
+        - Militärischer Führer der Einheit
+    09/2022 - 10/2023        IT-Teamleiter MS-AD-Exchange
         - Windows Server Administration
         - Planung von Teamgebundenen und übergreifenden Projekten
         - Koordinierung der Zusammenarbeit zweier Standorte
@@ -60,7 +86,7 @@ Berufserfahrung
         - Selbstservice Portal anhand des Access Right Managers von Solarwinds
         - Neuplanung der Filestruktur mit Hilfe von DFS
 
-    07/2019 - 09/2022       IT-Systemadministrator
+    07/2019 - 09/2022        IT-Systemadministrator
         - Windows Server Administration
         - Teamleitung MS-Server 2008 bis 2019
         - Virtualisierung mit VMware• Baramundi Management System (Softwareverteilung)
@@ -83,10 +109,14 @@ Qualifikationen und Tätigkeiten
 -------------------------------
 
     - Sehr gute Anwenderkenntnisse im Betriebssystem Windows, sowie Linux und MS Office
-    - Microsoft365 Administration
     - Baramundi Management System (Softwareverteilung)
-    - Solarwinds ARM• MS Active Directory Domain Services
+    - Solarwinds ARM
+    - MS Active Directory Domain Services
     - MS Exchange Server
+    - Exchange Online
+    - Azure
+    - Microsoft Entra
+    - SharePoint Online
     - MS Server
     - Gute Englischkenntnisse in Wort und Schrift
     - Führerschein Klasse B
