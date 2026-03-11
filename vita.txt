@@ -5,10 +5,10 @@
             \____|_| |_|_|  |_|___/\__\___/| .__/|_| |_| /____\___|_|\__|_|\___|_|   
                                            |_|
 
->>  Im Zeitalter der Computerisierung, erlebten Nerds ihren Aufschwung.
->>  Ohne uns würden sich viele im Kreis drehen und auf der Stelle laufen.
->>  Wenn das nur mal die Peiniger aus der Vergangenheit wüssten XD Lustige Vorstellung.
->>  Ah … also ich, Nerd, Jung, Feuerwehrmann, Sanitäter und Hobbytüftler.
+>> Hauptberuflich bewege ich mich tief im Maschinenraum der IT: Systeme stabil halten, Strukturen vereinfachen, Probleme finden, bevor sie andere merken. Ich denke analytisch, arbeite lösungsorientiert und habe keine Scheu vor komplexen Umgebungen – im Gegenteil, da fühle ich mich wohl.
+>> Parallel dazu engagiere ich mich ehrenamtlich im Einsatzdienst. Dort zählt weniger Theorie und mehr Haltung: Verantwortung übernehmen, ruhig bleiben, Entscheidungen treffen, wenn es darauf ankommt. Technik, Organisation und Menschlichkeit treffen hier ziemlich direkt aufeinander.
+>> Was mich ausmacht?
+>> Ein klarer Kopf, ein hoher Anspruch an Qualität – und der feste Wille, Dinge sinnvoll zu tun. Ob im Rechenzentrum oder am Einsatzort.
 
 
 Persönliche Daten:
@@ -23,7 +23,9 @@ Werdegang
 ---------
 
     Berufstätigkeit
-    02.2025 - dato          Senior IT-Systemadministrator bei 
+    03.2026 - dato          Consultant bei 
+                            BAGHUS GmbH in München (Standort Murnau)
+    02.2025 - 02.2026       Senior IT-Systemadministrator bei 
                             SoftDeCC Software GmbH in München
     05.2024 - 01.2025       Senior IT-Systemadministrator bei 
                             Diakonie Herzogsägmühle gGmbH in Peiting
@@ -40,7 +42,7 @@ Werdegang
 
 Berufserfahrung
 ---------------
-    02/2025 – dato          Senior IT-Systemadministrator bei SoftDeCC Software GmbH
+    02/2025 – 02/2026        Senior IT-Systemadministrator bei SoftDeCC Software GmbH
         - Administration der Server Landschaft (Windows Server, Linux)
         - Administration des MS ADDS
         - Administration von M365
@@ -48,20 +50,24 @@ Berufserfahrung
         - Clint Management incl. Softwareverteilung und Inventarisierung
         - Firewall Konfiguration und Verwaltung
         - Vorbereitung der Kundeninstallationen in AWS
+
     Relevante Projekte:
         - Einführung und Einrichtung von Baramundi
         - Umzug von MDeamon nach Exchange Online
         - Härtung der Benutzerstruktur Tier-Konzept
+
     05/2024 – 01/2025        Senior IT-Systemadministrator bei Diakonie Herzogsägmühle gGmbH
         - Administration der Windows Server Landschaft
         - Administration der im Unternehmen eingesetzten Software
         - Clientmanagement incl. Softwareverteilung und Inventarisierung
         - Betreuung und Bereitstellung des Intranets auf der Basis von Intrexx
+
     11/2023 – 04/2024        IT-Feldwebel bei der Bundeswehr
         - Koordination des Server Trupps zur Verlegung
         - Auf- und Abbau von Serverkomponenten
         - Inbetriebnahme und Einrichtung der Serverkomponenten
         - Militärischer Führer der Einheit
+
     09/2022 - 10/2023        IT-Teamleiter MS-AD-Exchange
         - Windows Server Administration
         - Planung von Teamgebundenen und übergreifenden Projekten
