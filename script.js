@@ -343,11 +343,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     function showWelcome() {
         const banner = document.createElement('div');
+        banner.className = 'crt-banner';
         banner.innerHTML =
-            'Willkommen im Terminal von Christoph Zeitler.<br>' +
-            'Tippe <span class="hint">help</span>, um alle Befehle zu sehen, ' +
-            'oder <span class="hint">cat vita</span> für meinen Lebenslauf.<br>' +
-            '&nbsp;';
+            '    **** ZEITLER.TECH BASIC V2 ****\n' +
+            '\n' +
+            ' 64K RAM SYSTEM  38911 BASIC BYTES FREE\n' +
+            '\n' +
+            'READY.\n' +
+            '<span class="cursor">█</span>';
         outputDiv.appendChild(banner);
         scrollToBottom();
     }
