@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         { command: 'echo [text]', description: 'Display text' },
         { command: 'cal', description: 'Display a simple calendar for the current month' },
         { command: 'buymeacoffee', description: 'Show Buy Me a Coffee button' },
-        { command: 'github', description: 'List GitHub repositories' }
+        { command: 'github', description: 'List GitHub & RettTechSolutions projects' }
     ];
 
     inputField.addEventListener('keydown', (event) => {
@@ -98,6 +98,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = String(str);
+        return div.innerHTML;
+    }
+
     function commonPrefix(strings) {
         if (!strings.length) return '';
         let prefix = strings[0];
@@ -128,22 +134,40 @@ document.addEventListener('DOMContentLoaded', (event) => {
             ];
             simulateTyping(matrixText, 0);
         } else if (command === 'github') {
-            fetch('https://api.github.com/users/w0rkingchr1s/repos')
-                .then(response => response.json())
-                .then(data => {
-                    let repoList = 'GitHub Repositories:<br>';
-                    data.filter(repo => !repo.fork).forEach(repo => {
-                        repoList += `<a href="${repo.html_url}" target="_blank">${repo.name}</a><br>`;
+            const sources = [
+                { title: 'w0rkingchr1s', url: 'https://api.github.com/users/w0rkingchr1s/repos?per_page=100&sort=updated' },
+                { title: 'RettTechSolutions', url: 'https://api.github.com/orgs/RettTechSolutions/repos?per_page=100&sort=updated' }
+            ];
+            Promise.all(sources.map(src =>
+                fetch(src.url)
+                    .then(res => (res.ok ? res.json() : []))
+                    .catch(() => [])
+                    .then(data => ({ title: src.title, data: Array.isArray(data) ? data : [] }))
+            )).then(results => {
+                let html = '';
+                results.forEach(({ title, data }) => {
+                    const repos = data
+                        .filter(repo => !repo.fork && !repo.archived)
+                        .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+                    if (!repos.length) return;
+                    html += `<span class="repo-group">${escapeHtml(title)}:</span><br>`;
+                    repos.forEach(repo => {
+                        html += `<a href="${escapeHtml(repo.html_url)}" target="_blank" rel="noopener">${escapeHtml(repo.name)}</a>`;
+                        if (repo.description) {
+                            html += ` <span class="repo-desc">- ${escapeHtml(repo.description)}</span>`;
+                        }
+                        html += '<br>';
                     });
-                    response.innerHTML = repoList;
-                    outputDiv.appendChild(response);
-                    scrollToBottom();
-                })
-                .catch(error => {
-                    response.textContent = 'Error fetching GitHub repositories';
-                    outputDiv.appendChild(response);
-                    scrollToBottom();
+                    html += '<br>';
                 });
+                response.innerHTML = html || 'No public repositories found.';
+                outputDiv.appendChild(response);
+                scrollToBottom();
+            }).catch(() => {
+                response.textContent = 'Error fetching GitHub repositories';
+                outputDiv.appendChild(response);
+                scrollToBottom();
+            });
         } else {
             outputDiv.appendChild(response);
             if (command === 'ls') {
@@ -318,12 +342,70 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     function showWelcome() {
+        const now = new Date();
+
+        // "Uptime" als Gag: laeuft seit dem Geburtsdatum (09.09.1993)
+        const birth = new Date(1993, 8, 9);
+        const diffMs = now - birth;
+        const days = Math.floor(diffMs / 86400000);
+        const hours = Math.floor((diffMs % 86400000) / 3600000);
+        const mins = Math.floor((diffMs % 3600000) / 60000);
+        const uptime = `${days} days, ${hours} hours, ${mins} mins`;
+
+        // ASCII-Terminal-Logo (links)
+        const W = 15;
+        const bar = '─'.repeat(W + 2);
+        const box = s => `│ ${String(s).padEnd(W)} │`;
+        const logo = [
+            `╭${bar}╮`,
+            box(' ●  ●  ●'),
+            `├${bar}┤`,
+            box(''),
+            box('  >_ guest'),
+            box('  zeitler.tech'),
+            box(''),
+            `╰${bar}╯`
+        ];
+        const logoW = W + 4;
+
+        // System-Info (rechts)
+        const info = [
+            { title: 'guest@zeitler.tech' },
+            { sep: true },
+            { k: 'OS', v: 'zeitler.tech GNU/Linux x86_64' },
+            { k: 'Host', v: 'Christoph Zeitler' },
+            { k: 'Kernel', v: '6.8.0-60-generic' },
+            { k: 'Uptime', v: uptime },
+            { k: 'Shell', v: 'bash 5.2.15' },
+            { k: 'Terminal', v: 'zeitler.tech-web' },
+            { k: 'Role', v: 'IT-Systemadministrator & Consultant' },
+            { k: 'Stack', v: 'AD · Exchange · M365 · Azure · Linux' },
+            { k: 'Certs', v: 'ITIL v4' }
+        ];
+        const infoHtml = info.map(line => {
+            if (line.title) return `<span class="nf-title">${escapeHtml(line.title)}</span>`;
+            if (line.sep) return `<span class="nf-sep">${'-'.repeat(18)}</span>`;
+            return `<span class="nf-key">${line.k}:</span> <span class="nf-val">${escapeHtml(line.v)}</span>`;
+        });
+
+        const rows = Math.max(logo.length, infoHtml.length);
+        let html = '';
+        for (let i = 0; i < rows; i++) {
+            const left = i < logo.length
+                ? `<span class="nf-logo">${escapeHtml(logo[i])}</span>`
+                : ' '.repeat(logoW);
+            const right = i < infoHtml.length ? infoHtml[i] : '';
+            html += `${left}  ${right}\n`;
+        }
+
+        // Farbpaletten-Zeile (neofetch-Signatur)
+        const palette = ['#FF5555', '#50FA7B', '#F1FA8C', '#5FB0FF', '#FF79C6', '#33D6E5', '#F8F8F2'];
+        html += `\n${' '.repeat(logoW)}  `;
+        html += palette.map(c => `<span style="color:${c}">███</span>`).join('');
+        html += '\n';
+
         const banner = document.createElement('div');
-        banner.innerHTML =
-            'Willkommen im Terminal von Christoph Zeitler.<br>' +
-            'Tippe <span class="hint">help</span>, um alle Befehle zu sehen, ' +
-            'oder <span class="hint">cat vita</span> für meinen Lebenslauf.<br>' +
-            '&nbsp;';
+        banner.innerHTML = html;
         outputDiv.appendChild(banner);
         scrollToBottom();
     }

@@ -57,16 +57,43 @@ body {
     font-size: 1em; /* Größere Schriftgröße für bessere Lesbarkeit */
 }
 
-.hint {
-    color: #00FF00;
-    background-color: rgba(0, 255, 0, 0.15);
-    padding: 0 4px;
-    border-radius: 2px;
-}
-
 #output a {
     color: #00FF00;
     text-decoration: underline;
+}
+
+.nf-logo {
+    color: #00FF00;
+    text-shadow: 0 0 4px rgba(0, 255, 0, 0.5);
+}
+
+.nf-title {
+    color: #33D6E5;
+    font-weight: bold;
+}
+
+.nf-key {
+    color: #33D6E5;
+    font-weight: bold;
+}
+
+.nf-val {
+    color: #00FF00;
+}
+
+.nf-sep {
+    color: #00AA00;
+}
+
+.repo-group {
+    color: #00FF00;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.repo-desc {
+    color: #7CFC7C;
+    opacity: 0.75;
 }
 
 #input::placeholder {
