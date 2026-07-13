@@ -69,6 +69,17 @@ body {
     text-decoration: underline;
 }
 
+.repo-group {
+    color: #00FF00;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.repo-desc {
+    color: #7CFC7C;
+    opacity: 0.75;
+}
+
 #input::placeholder {
     color: #00FF00;
 }

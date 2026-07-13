@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         { command: 'echo [text]', description: 'Display text' },
         { command: 'cal', description: 'Display a simple calendar for the current month' },
         { command: 'buymeacoffee', description: 'Show Buy Me a Coffee button' },
-        { command: 'github', description: 'List GitHub repositories' }
+        { command: 'github', description: 'List GitHub & RettTechSolutions projects' }
     ];
 
     inputField.addEventListener('keydown', (event) => {
@@ -98,6 +98,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = String(str);
+        return div.innerHTML;
+    }
+
     function commonPrefix(strings) {
         if (!strings.length) return '';
         let prefix = strings[0];
@@ -128,22 +134,40 @@ document.addEventListener('DOMContentLoaded', (event) => {
             ];
             simulateTyping(matrixText, 0);
         } else if (command === 'github') {
-            fetch('https://api.github.com/users/w0rkingchr1s/repos')
-                .then(response => response.json())
-                .then(data => {
-                    let repoList = 'GitHub Repositories:<br>';
-                    data.filter(repo => !repo.fork).forEach(repo => {
-                        repoList += `<a href="${repo.html_url}" target="_blank">${repo.name}</a><br>`;
+            const sources = [
+                { title: 'w0rkingchr1s', url: 'https://api.github.com/users/w0rkingchr1s/repos?per_page=100&sort=updated' },
+                { title: 'RettTechSolutions', url: 'https://api.github.com/orgs/RettTechSolutions/repos?per_page=100&sort=updated' }
+            ];
+            Promise.all(sources.map(src =>
+                fetch(src.url)
+                    .then(res => (res.ok ? res.json() : []))
+                    .catch(() => [])
+                    .then(data => ({ title: src.title, data: Array.isArray(data) ? data : [] }))
+            )).then(results => {
+                let html = '';
+                results.forEach(({ title, data }) => {
+                    const repos = data
+                        .filter(repo => !repo.fork && !repo.archived)
+                        .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+                    if (!repos.length) return;
+                    html += `<span class="repo-group">${escapeHtml(title)}:</span><br>`;
+                    repos.forEach(repo => {
+                        html += `<a href="${escapeHtml(repo.html_url)}" target="_blank" rel="noopener">${escapeHtml(repo.name)}</a>`;
+                        if (repo.description) {
+                            html += ` <span class="repo-desc">- ${escapeHtml(repo.description)}</span>`;
+                        }
+                        html += '<br>';
                     });
-                    response.innerHTML = repoList;
-                    outputDiv.appendChild(response);
-                    scrollToBottom();
-                })
-                .catch(error => {
-                    response.textContent = 'Error fetching GitHub repositories';
-                    outputDiv.appendChild(response);
-                    scrollToBottom();
+                    html += '<br>';
                 });
+                response.innerHTML = html || 'No public repositories found.';
+                outputDiv.appendChild(response);
+                scrollToBottom();
+            }).catch(() => {
+                response.textContent = 'Error fetching GitHub repositories';
+                outputDiv.appendChild(response);
+                scrollToBottom();
+            });
         } else {
             outputDiv.appendChild(response);
             if (command === 'ls') {
