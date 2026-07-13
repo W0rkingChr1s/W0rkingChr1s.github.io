@@ -344,10 +344,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function showWelcome() {
         const now = new Date();
 
-        // "Uptime" = Zeit in der IT, gestartet mit der Ausbildung 09/2016
-        let totalMonths = (now.getFullYear() - 2016) * 12 + (now.getMonth() - 8);
-        if (totalMonths < 0) totalMonths = 0;
-        const uptime = `${Math.floor(totalMonths / 12)} years, ${totalMonths % 12} months`;
+        // "Uptime" als Gag: laeuft seit dem Geburtsdatum (09.09.1993)
+        const birth = new Date(1993, 8, 9);
+        const diffMs = now - birth;
+        const days = Math.floor(diffMs / 86400000);
+        const hours = Math.floor((diffMs % 86400000) / 3600000);
+        const mins = Math.floor((diffMs % 3600000) / 60000);
+        const uptime = `${days} days, ${hours} hours, ${mins} mins`;
 
         // ASCII-Terminal-Logo (links)
         const W = 15;
