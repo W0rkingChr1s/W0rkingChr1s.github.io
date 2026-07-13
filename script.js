@@ -352,23 +352,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const mins = Math.floor((diffMs % 3600000) / 60000);
         const uptime = `${days} days, ${hours} hours, ${mins} mins`;
 
-        // ASCII-Terminal-Logo (links)
-        const W = 15;
-        const bar = '─'.repeat(W + 2);
-        const box = s => `│ ${String(s).padEnd(W)} │`;
-        const logo = [
-            `╭${bar}╮`,
-            box(' ●  ●  ●'),
-            `├${bar}┤`,
-            box(''),
-            box('  >_ guest'),
-            box('  zeitler.tech'),
-            box(''),
-            `╰${bar}╯`
-        ];
-        const logoW = W + 4;
-
-        // System-Info (rechts)
+        // System-Info (rechte Spalte)
         const info = [
             { title: 'guest@zeitler.tech' },
             { sep: true },
@@ -386,26 +370,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
             if (line.title) return `<span class="nf-title">${escapeHtml(line.title)}</span>`;
             if (line.sep) return `<span class="nf-sep">${'-'.repeat(18)}</span>`;
             return `<span class="nf-key">${line.k}:</span> <span class="nf-val">${escapeHtml(line.v)}</span>`;
-        });
-
-        const rows = Math.max(logo.length, infoHtml.length);
-        let html = '';
-        for (let i = 0; i < rows; i++) {
-            const left = i < logo.length
-                ? `<span class="nf-logo">${escapeHtml(logo[i])}</span>`
-                : ' '.repeat(logoW);
-            const right = i < infoHtml.length ? infoHtml[i] : '';
-            html += `${left}  ${right}\n`;
-        }
+        }).join('\n');
 
         // Farbpaletten-Zeile (neofetch-Signatur)
         const palette = ['#FF5555', '#50FA7B', '#F1FA8C', '#5FB0FF', '#FF79C6', '#33D6E5', '#F8F8F2'];
-        html += `\n${' '.repeat(logoW)}  `;
-        html += palette.map(c => `<span style="color:${c}">███</span>`).join('');
-        html += '\n';
+        const paletteHtml = palette.map(c => `<span style="color:${c}">███</span>`).join('');
 
         const banner = document.createElement('div');
-        banner.innerHTML = html;
+        banner.className = 'neofetch';
+        banner.innerHTML =
+            '<div class="nf-cols">' +
+                '<div class="nf-window">' +
+                    '<div class="nf-bar"><i></i><i></i><i></i></div>' +
+                    '<div class="nf-screen">&gt;_ guest\nzeitler.tech</div>' +
+                '</div>' +
+                `<div class="nf-info">${infoHtml}</div>` +
+            '</div>' +
+            `<div class="nf-palette">${paletteHtml}</div>`;
         outputDiv.appendChild(banner);
         scrollToBottom();
     }
