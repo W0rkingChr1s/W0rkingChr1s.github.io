@@ -47,7 +47,7 @@ Berufserfahrung
         - Administration des MS ADDS
         - Administration von M365
         - Administration der Unternehmensanwendungen
-        - Clint Management incl. Softwareverteilung und Inventarisierung
+        - Client Management inkl. Softwareverteilung und Inventarisierung
         - Firewall Konfiguration und Verwaltung
         - Vorbereitung der Kundeninstallationen in AWS
 
@@ -95,10 +95,15 @@ Berufserfahrung
     07/2019 - 09/2022        IT-Systemadministrator
         - Windows Server Administration
         - Teamleitung MS-Server 2008 bis 2019
-        - Virtualisierung mit VMware• Baramundi Management System (Softwareverteilung)
-        - Administration MS Exchange Server• Benutzerverwaltung AD
-        - Windows Client Support• Solarwinds ARM• MS Active Directory Dienste
-        - Cisco Webex Administration• Nextcloud Administration
+        - Virtualisierung mit VMware
+        - Baramundi Management System (Softwareverteilung)
+        - Administration MS Exchange Server
+        - Benutzerverwaltung AD
+        - Windows Client Support
+        - Solarwinds ARM
+        - MS Active Directory Dienste
+        - Cisco Webex Administration
+        - Nextcloud Administration
         - DigitalSignage Administration (Screenly OSE)
             
     Relevante Projekte:
