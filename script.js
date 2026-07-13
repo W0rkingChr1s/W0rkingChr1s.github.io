@@ -342,15 +342,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     function showWelcome() {
+        const now = new Date();
+        const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const pad = n => String(n).padStart(2, '0');
+        const stamp = `${dayNames[now.getDay()]} ${monthNames[now.getMonth()]} ` +
+            `${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:` +
+            `${pad(now.getSeconds())} ${now.getFullYear()}`;
+
         const banner = document.createElement('div');
-        banner.className = 'crt-banner';
-        banner.innerHTML =
-            '    **** ZEITLER.TECH BASIC V2 ****\n' +
+        banner.textContent =
+            `Last login: ${stamp} from 192.168.178.1\n` +
             '\n' +
-            ' 64K RAM SYSTEM  38911 BASIC BYTES FREE\n' +
+            'Welcome to zeitler.tech (GNU/Linux 6.8.0-60-generic x86_64)\n' +
             '\n' +
-            'READY.\n' +
-            '<span class="cursor">█</span>';
+            ' * Christoph Zeitler — IT-Systemadministrator & Consultant\n';
         outputDiv.appendChild(banner);
         scrollToBottom();
     }
