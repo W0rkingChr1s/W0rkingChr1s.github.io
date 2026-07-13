@@ -57,6 +57,18 @@ body {
     font-size: 1em; /* Größere Schriftgröße für bessere Lesbarkeit */
 }
 
+.hint {
+    color: #00FF00;
+    background-color: rgba(0, 255, 0, 0.15);
+    padding: 0 4px;
+    border-radius: 2px;
+}
+
+#output a {
+    color: #00FF00;
+    text-decoration: underline;
+}
+
 #input::placeholder {
     color: #00FF00;
 }

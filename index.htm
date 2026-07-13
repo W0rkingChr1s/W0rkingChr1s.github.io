@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Christoph Zeitler – IT-Systemadministrator & Consultant. Interaktive Terminal-Homepage: 'help' eingeben.">
+    <meta name="author" content="Christoph Zeitler">
+    <meta name="color-scheme" content="dark">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%232C2C2C'/><text y='13' x='1' font-family='monospace' font-size='13' fill='%2300FF00'>&gt;_</text></svg>">
     <title>>_Christoph Zeitler</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -12,10 +16,10 @@
         <div id="output"></div>
         <div id="input-line">
             <span id="prompt">guest@zeitler.tech:~$</span>
-            <input type="text" id="input" autofocus>
+            <input type="text" id="input" aria-label="Terminal-Eingabe" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" autofocus>
         </div>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html>

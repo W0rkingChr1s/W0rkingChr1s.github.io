@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         'impressum': 'impressum.txt'
     };
 
+    const history = [];
+    let historyIndex = 0;
+
     const commands = [
         'ls', 'cat', 'pwd', 'rm -rf /', 'whoami', 'hello', 'matrix', 'joke', 'quote',
         'clear', 'date', 'help', 'echo', 'cal', 'cat impressum', 'cat vita', 'buymeacoffee', 'github'
@@ -39,12 +42,29 @@ document.addEventListener('DOMContentLoaded', (event) => {
             event.preventDefault();
             const command = inputField.value.trim();
             if (command) {
+                history.push(command);
+                historyIndex = history.length;
                 executeCommand(command);
                 inputField.value = '';
             }
         } else if (event.key === 'Tab') {
             event.preventDefault();
             autocomplete(inputField.value.trim());
+        } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            if (historyIndex > 0) {
+                historyIndex--;
+                inputField.value = history[historyIndex];
+            }
+        } else if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            if (historyIndex < history.length - 1) {
+                historyIndex++;
+                inputField.value = history[historyIndex];
+            } else {
+                historyIndex = history.length;
+                inputField.value = '';
+            }
         }
     });
 
@@ -52,12 +72,41 @@ document.addEventListener('DOMContentLoaded', (event) => {
         scrollToBottom(); // Ensure the input field is visible when focused
     });
 
+    // Klick irgendwo ins Terminal fokussiert die Eingabe (übliches Terminal-Verhalten)
+    terminalDiv.addEventListener('click', () => {
+        if (!window.getSelection().toString()) {
+            inputField.focus();
+        }
+    });
+
     function autocomplete(input) {
+        if (!input) return;
         const potentialCommands = commands.concat(Object.keys(files));
-        const matches = potentialCommands.filter(cmd => cmd.startsWith(input));
+        const matches = [...new Set(potentialCommands.filter(cmd => cmd.startsWith(input)))];
         if (matches.length === 1) {
             inputField.value = matches[0] + ' ';
+        } else if (matches.length > 1) {
+            const echo = document.createElement('div');
+            echo.textContent = `guest@zeitler.tech:~$ ${input}`;
+            outputDiv.appendChild(echo);
+            const list = document.createElement('div');
+            list.textContent = matches.join('   ');
+            outputDiv.appendChild(list);
+            // Auf das längste gemeinsame Präfix vervollständigen
+            inputField.value = commonPrefix(matches);
+            scrollToBottom();
         }
+    }
+
+    function commonPrefix(strings) {
+        if (!strings.length) return '';
+        let prefix = strings[0];
+        for (const str of strings) {
+            while (!str.startsWith(prefix)) {
+                prefix = prefix.slice(0, -1);
+            }
+        }
+        return prefix;
     }
 
     function executeCommand(command) {
@@ -180,7 +229,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         break;
                     case 'buymeacoffee':
                         response.innerHTML = getCoffeeArt();
-                        coffeeButton.style.display = 'block';
+                        if (coffeeButton) {
+                            coffeeButton.style.display = 'block';
+                        }
                         scrollToBottom(); // Ensure the terminal scrolls to show the new content
                         break;
                     default:
@@ -265,4 +316,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
 <a href="https://buymeacoffee.com/w0rkingchr1s" target="_blank">     ┏━━━━━━━━━━━━━━━━━━━━┓<br>     ┃ ⛾ Buy me a Coffee ┃<br>     ┗━━━━━━━━━━━━━━━━━━━━┛</a>
         `;
     }
+
+    function showWelcome() {
+        const banner = document.createElement('div');
+        banner.innerHTML =
+            'Willkommen im Terminal von Christoph Zeitler.<br>' +
+            'Tippe <span class="hint">help</span>, um alle Befehle zu sehen, ' +
+            'oder <span class="hint">cat vita</span> für meinen Lebenslauf.<br>' +
+            '&nbsp;';
+        outputDiv.appendChild(banner);
+        scrollToBottom();
+    }
+
+    showWelcome();
 });
