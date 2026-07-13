@@ -343,21 +343,66 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     function showWelcome() {
         const now = new Date();
-        const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        const pad = n => String(n).padStart(2, '0');
-        const stamp = `${dayNames[now.getDay()]} ${monthNames[now.getMonth()]} ` +
-            `${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:` +
-            `${pad(now.getSeconds())} ${now.getFullYear()}`;
+
+        // "Uptime" = Zeit in der IT, gestartet mit der Ausbildung 09/2016
+        let totalMonths = (now.getFullYear() - 2016) * 12 + (now.getMonth() - 8);
+        if (totalMonths < 0) totalMonths = 0;
+        const uptime = `${Math.floor(totalMonths / 12)} years, ${totalMonths % 12} months`;
+
+        // ASCII-Terminal-Logo (links)
+        const W = 15;
+        const bar = '─'.repeat(W + 2);
+        const box = s => `│ ${String(s).padEnd(W)} │`;
+        const logo = [
+            `╭${bar}╮`,
+            box(' ●  ●  ●'),
+            `├${bar}┤`,
+            box(''),
+            box('  >_ guest'),
+            box('  zeitler.tech'),
+            box(''),
+            `╰${bar}╯`
+        ];
+        const logoW = W + 4;
+
+        // System-Info (rechts)
+        const info = [
+            { title: 'guest@zeitler.tech' },
+            { sep: true },
+            { k: 'OS', v: 'zeitler.tech GNU/Linux x86_64' },
+            { k: 'Host', v: 'Christoph Zeitler' },
+            { k: 'Kernel', v: '6.8.0-60-generic' },
+            { k: 'Uptime', v: uptime },
+            { k: 'Shell', v: 'bash 5.2.15' },
+            { k: 'Terminal', v: 'zeitler.tech-web' },
+            { k: 'Role', v: 'IT-Systemadministrator & Consultant' },
+            { k: 'Stack', v: 'AD · Exchange · M365 · Azure · Linux' },
+            { k: 'Certs', v: 'ITIL v4' }
+        ];
+        const infoHtml = info.map(line => {
+            if (line.title) return `<span class="nf-title">${escapeHtml(line.title)}</span>`;
+            if (line.sep) return `<span class="nf-sep">${'-'.repeat(18)}</span>`;
+            return `<span class="nf-key">${line.k}:</span> <span class="nf-val">${escapeHtml(line.v)}</span>`;
+        });
+
+        const rows = Math.max(logo.length, infoHtml.length);
+        let html = '';
+        for (let i = 0; i < rows; i++) {
+            const left = i < logo.length
+                ? `<span class="nf-logo">${escapeHtml(logo[i])}</span>`
+                : ' '.repeat(logoW);
+            const right = i < infoHtml.length ? infoHtml[i] : '';
+            html += `${left}  ${right}\n`;
+        }
+
+        // Farbpaletten-Zeile (neofetch-Signatur)
+        const palette = ['#FF5555', '#50FA7B', '#F1FA8C', '#5FB0FF', '#FF79C6', '#33D6E5', '#F8F8F2'];
+        html += `\n${' '.repeat(logoW)}  `;
+        html += palette.map(c => `<span style="color:${c}">███</span>`).join('');
+        html += '\n';
 
         const banner = document.createElement('div');
-        banner.textContent =
-            `Last login: ${stamp} from 192.168.178.1\n` +
-            '\n' +
-            'Welcome to zeitler.tech (GNU/Linux 6.8.0-60-generic x86_64)\n' +
-            '\n' +
-            ' * Christoph Zeitler — IT-Systemadministrator & Consultant\n';
+        banner.innerHTML = html;
         outputDiv.appendChild(banner);
         scrollToBottom();
     }
