@@ -114,6 +114,13 @@ body {
     letter-spacing: -1px;
 }
 
+/* h1 im Banner: semantisch Ueberschrift, optisch normale Info-Zeile */
+.nf-h1 {
+    display: inline;
+    font: inherit;
+    margin: 0;
+}
+
 .nf-title {
     color: #33D6E5;
     font-weight: bold;
@@ -141,6 +148,125 @@ body {
 .repo-desc {
     color: #7CFC7C;
     opacity: 0.75;
+}
+
+/* MOTD unter dem Banner: normaler Textfluss statt Terminal-Preformatierung */
+.motd {
+    white-space: normal;
+    max-width: 78ch;
+    margin: 4px 0 14px;
+}
+
+.motd p {
+    margin: 0 0 6px;
+}
+
+.motd a {
+    color: #00FF00;
+    text-decoration: underline;
+}
+
+.motd code {
+    color: #33D6E5;
+    font-family: inherit;
+}
+
+.motd-nav {
+    color: #00AA00;
+}
+
+/* --- Dokumentseiten (vita, impressum, 404) --- */
+body.doc {
+    display: block;
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
+}
+
+.doc-wrap {
+    max-width: 92ch;
+    margin: 0 auto;
+    padding: 24px 16px 64px;
+}
+
+.doc a {
+    color: #00FF00;
+}
+
+.doc h1,
+.doc h2,
+.doc h3 {
+    color: #33D6E5;
+    line-height: 1.35;
+}
+
+.doc h1 {
+    font-size: 1.5em;
+    margin: 0 0 4px;
+}
+
+.doc h2 {
+    font-size: 1.15em;
+    margin: 30px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #00AA00;
+}
+
+.doc h3 {
+    font-size: 1em;
+    margin: 20px 0 4px;
+}
+
+.doc p,
+.doc li {
+    line-height: 1.6;
+}
+
+.doc ul {
+    margin: 4px 0;
+    padding-left: 1.3em;
+}
+
+.doc .lead {
+    color: #7CFC7C;
+}
+
+.doc-nav {
+    margin-bottom: 20px;
+    color: #00AA00;
+}
+
+.doc-meta {
+    color: #00AA00;
+}
+
+.doc dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 20px;
+    margin: 8px 0;
+}
+
+.doc dt {
+    color: #33D6E5;
+}
+
+.doc dd {
+    margin: 0;
+}
+
+.job {
+    margin-bottom: 22px;
+}
+
+.job-when {
+    color: #00AA00;
+}
+
+.doc-footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid #00AA00;
 }
 
 #input::placeholder {

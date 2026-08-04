@@ -1,0 +1,10 @@
+# robots.txt für https://zeitler.tech/
+User-agent: *
+Allow: /
+
+# Rohtextvarianten (werden nur vom Terminal per fetch geladen) nicht indexieren,
+# die HTML-Fassungen unter /vita.html und /impressum.html sind maßgeblich.
+Disallow: /vita.txt
+Disallow: /impressum.txt
+
+Sitemap: https://zeitler.tech/sitemap.xml
