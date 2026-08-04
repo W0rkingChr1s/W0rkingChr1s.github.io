@@ -341,55 +341,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
         `;
     }
 
-    function showWelcome() {
-        const now = new Date();
+    // Das Welcome-Banner steht statisch im HTML (crawlbar ohne JS).
+    // Hier wird nur die "Uptime" nachgezogen - als Gag laeuft sie seit dem
+    // Geburtsdatum (09.09.1993).
+    function updateUptime() {
+        const uptimeEl = document.getElementById('uptime');
+        if (!uptimeEl) return;
 
-        // "Uptime" als Gag: laeuft seit dem Geburtsdatum (09.09.1993)
         const birth = new Date(1993, 8, 9);
-        const diffMs = now - birth;
+        const diffMs = new Date() - birth;
         const days = Math.floor(diffMs / 86400000);
         const hours = Math.floor((diffMs % 86400000) / 3600000);
         const mins = Math.floor((diffMs % 3600000) / 60000);
-        const uptime = `${days} days, ${hours} hours, ${mins} mins`;
-
-        // System-Info (rechte Spalte)
-        const info = [
-            { title: 'guest@zeitler.tech' },
-            { sep: true },
-            { k: 'OS', v: 'zeitler.tech GNU/Linux x86_64' },
-            { k: 'Host', v: 'Christoph Zeitler' },
-            { k: 'Kernel', v: '6.8.0-60-generic' },
-            { k: 'Uptime', v: uptime },
-            { k: 'Shell', v: 'bash 5.2.15' },
-            { k: 'Terminal', v: 'zeitler.tech-web' },
-            { k: 'Role', v: 'IT-Systemadministrator & Consultant' },
-            { k: 'Stack', v: 'AD · Exchange · M365 · Azure · Linux' },
-            { k: 'Certs', v: 'ITIL v4' }
-        ];
-        const infoHtml = info.map(line => {
-            if (line.title) return `<span class="nf-title">${escapeHtml(line.title)}</span>`;
-            if (line.sep) return `<span class="nf-sep">${'-'.repeat(18)}</span>`;
-            return `<span class="nf-key">${line.k}:</span> <span class="nf-val">${escapeHtml(line.v)}</span>`;
-        }).join('\n');
-
-        // Farbpaletten-Zeile (neofetch-Signatur)
-        const palette = ['#FF5555', '#50FA7B', '#F1FA8C', '#5FB0FF', '#FF79C6', '#33D6E5', '#F8F8F2'];
-        const paletteHtml = palette.map(c => `<span style="color:${c}">███</span>`).join('');
-
-        const banner = document.createElement('div');
-        banner.className = 'neofetch';
-        banner.innerHTML =
-            '<div class="nf-cols">' +
-                '<div class="nf-window">' +
-                    '<div class="nf-bar"><i></i><i></i><i></i></div>' +
-                    '<div class="nf-screen">&gt;_ guest\nzeitler.tech</div>' +
-                '</div>' +
-                `<div class="nf-info">${infoHtml}</div>` +
-            '</div>' +
-            `<div class="nf-palette">${paletteHtml}</div>`;
-        outputDiv.appendChild(banner);
-        scrollToBottom();
+        uptimeEl.textContent = `${days} days, ${hours} hours, ${mins} mins`;
     }
 
-    showWelcome();
+    updateUptime();
+    scrollToBottom();
 });
