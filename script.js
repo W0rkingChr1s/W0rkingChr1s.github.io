@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
           |       |]
           \\       /
            \`-----'\`
-<a href="https://buymeacoffee.com/w0rkingchr1s" target="_blank">     ┏━━━━━━━━━━━━━━━━━━━━┓<br>     ┃ ⛾ Buy me a Coffee ┃<br>     ┗━━━━━━━━━━━━━━━━━━━━┛</a>
+<a href="https://buymeacoffee.com/w0rkingchr1s" target="_blank" rel="noopener">     ┏━━━━━━━━━━━━━━━━━━━━┓<br>     ┃ ⛾ Buy me a Coffee ┃<br>     ┗━━━━━━━━━━━━━━━━━━━━┛</a>
         `;
     }
 
